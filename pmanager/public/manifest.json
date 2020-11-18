@@ -1,0 +1,15 @@
+{
+  "short_name": "Keychain Manager",
+  "name": "Create React App Sample",
+  "icons": [
+    {
+      "src": "key.ico",
+      "type": "image/x-icon",
+      "sizes": "72x72"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
