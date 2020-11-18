@@ -108,8 +108,9 @@ const Home = ({ history }) => {
         })
     }
 
-    const addApp = (otp, setOtp) => {
+    const addApp = (otp, setOtp, errorMessage) => {
         if (newName == "" || createPassword == "") {
+            errorMessage(undefined)
             timedErrorToast()
             return
         }
@@ -119,7 +120,13 @@ const Home = ({ history }) => {
             setCreatePassword("")
             setIsCreating(false)
             timedToast()
-        }, () => {
+        }, (error) => {
+            if (typeof error.response.data == "string") {
+                errorMessage(error.response.data)
+            } else {
+                errorMessage("Ha ocurrido un error al crear la app")
+            }
+
             timedErrorToast()
 
         })

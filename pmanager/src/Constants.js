@@ -2,7 +2,7 @@
 
 import axios from "axios"
 
-export const apiUrl = "https://9950146c9ef5.ngrok.io/api"
+export const apiUrl = "https://724f096a5482.ngrok.io/api"
 
 export const create = ({ path, data }, onSuccess = () => { }, onError = () => { }) => {
     axios.request({

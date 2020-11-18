@@ -3,12 +3,13 @@ import Modal from './Components/Modal'
 import Spinner from './Components/Spinner'
 const NewAppModal = ({ visible, callback, closeCallback, showErrorToast, isLoading = false, ...props }) => {
     const [otp, setOtp] = useState("")
+    const [errorMessage, setErrorMessage] = useState(undefined)
     return (<>{visible && <Modal >
         {showErrorToast && <div class="alert-toast fixed top-0 right-0 m-8 w-5/6 md:w-full max-w-sm">
 
             <label class="close cursor-pointer flex items-start justify-between w-full p-2 bg-red-500 h-14 rounded shadow-lg text-white" title="close" for="footertoast">
-                Tiene que llenar todos los campos
-</label>
+                {errorMessage ?? 'Tiene que llenar todos los campos'}
+            </label>
         </div>}
         <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div className="flex items-start">
@@ -42,7 +43,7 @@ const NewAppModal = ({ visible, callback, closeCallback, showErrorToast, isLoadi
                 <button
                     type="button"
                     className="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5"
-                    onClick={() => { callback(otp, setOtp) }}>
+                    onClick={() => { callback(otp, setOtp, setErrorMessage) }}>
                     <Spinner isLoading={isLoading} />
                     Aceptar
                 </button>

@@ -46,7 +46,12 @@ const Register = (props) => {
                 props.history.push('/login')
             })
             .catch(error => {
-                setAlert({ ...alert, visible: true, message: "No se pudo registrar", title: "error" })
+                if (error.response.data.errorMessage) {
+                    setAlert({ ...alert, visible: true, message: error.response.data.errorMessage, title: "error" })
+                } else {
+                    setAlert({ ...alert, visible: true, message: "No se pudo registrar", title: "error" })
+                }
+
                 setTimeout(() => setAlert({ ...alert, visible: false }), 2000)
             })
     }
