@@ -115,7 +115,8 @@ const Home = ({ history }) => {
             return
         }
         create({ path: `keychain/app/create/`, data: { password: createPassword, name: newName } }, () => {
-            setApps([...apps, { password: createPassword, name: newName, id: apps.length + 1000000 }])
+            setApps([...apps, { password: createPassword, name: newName, id: apps[apps.length - 1].id + 1 }])
+            console.log({ password: createPassword, name: newName, id: apps[apps.length - 1].id + 1 })
             setNewName("")
             setCreatePassword("")
             setIsCreating(false)
